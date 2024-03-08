@@ -12,6 +12,12 @@ import {
 } from "@/components/ui/card"
 import Link from "next/link"
 import { Badge } from "./ui/badge"
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipProvider,
+	TooltipTrigger,
+} from "./ui/tooltip"
 
 export function ArticleCard({
 	className,
@@ -23,11 +29,14 @@ export function ArticleCard({
 	apiName,
 	...props
 }) {
+	const shortDate = new Date(date).toLocaleDateString("en-EN", {
+		dateStyle: "medium",
+	})
 	const detailedDate = new Date(date).toLocaleDateString("en-EN", {
 		year: "numeric",
-		month: "short",
+		month: "long",
 		day: "numeric",
-		// weekday: "long",
+		weekday: "long",
 		hour: "numeric",
 		minute: "numeric",
 		// second: "numeric",
@@ -39,26 +48,24 @@ export function ArticleCard({
 				<CardTitle className="line-clamp-1">{title}</CardTitle>
 				<CardDescription className="pt-2">
 					<span>{author}</span>
-					{/* <span>{detailedDate}</span> */}
 				</CardDescription>
 			</CardHeader>
-			{/* <CardContent className="grid gap-4">
-				<div className=" flex items-center space-x-4 rounded-md border p-4">
-					<BellIcon />
-					<div className="flex-1 space-y-1">
-						<p className="text-sm font-medium leading-none">
-							Push Notifications
-						</p>
-						<p className="text-sm text-muted-foreground">
-							Send notifications to device.
-						</p>
-					</div>
-				</div>
-			</CardContent> */}
 			<CardFooter className="flex justify-between">
 				<div className="flex gap-2">
 					<Badge>{apiName}</Badge>
-					<span className="text-sm">{detailedDate}</span>
+					<TooltipProvider>
+						<Tooltip>
+							<TooltipTrigger asChild>
+								<Button variant="outline" size="sm">
+									{shortDate}
+								</Button>
+							</TooltipTrigger>
+							<TooltipContent>
+								<p>{detailedDate}</p>
+							</TooltipContent>
+						</Tooltip>
+					</TooltipProvider>
+					{/* <span className="text-sm">{detailedDate}</span> */}
 				</div>
 				<Button variant="link" asChild className="" size="md">
 					<Link href={url} target="_blank">
