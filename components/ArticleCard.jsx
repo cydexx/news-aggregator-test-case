@@ -47,7 +47,7 @@ export function ArticleCard({
 	return (
 		<Card className={cn("", className)} {...props}>
 			<CardHeader>
-				<CardTitle className="line-clamp-1">{title}</CardTitle>
+				<CardTitle className="line-clamp-1 text-lg">{title}</CardTitle>
 				<CardDescription className="pt-2">
 					<span>{author}</span>
 				</CardDescription>

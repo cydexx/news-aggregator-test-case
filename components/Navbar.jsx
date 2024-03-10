@@ -39,13 +39,14 @@ export default function Navbar() {
 	return (
 		<nav className="container">
 			<ul className="py-2  border-gray-300">
-				<li className="space-x-6 text-sm">
+				<li className="space-x-6 ">
 					{navLinks.map((link) => (
 						<Button
 							asChild
 							variant="link"
 							key={link.title}
 							size="md"
+							className="text-md"
 						>
 							<Link href={`/news/${link.url}`}>{link.title}</Link>
 						</Button>

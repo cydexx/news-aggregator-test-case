@@ -5,10 +5,10 @@ export default async function Page({ params }) {
 	const articles = await getNewsByCategory(params.slug)
 	return (
 		<div className="container">
-			<h1 className="text-xl">
-				News Category: <span></span>
+			<h1 className="text-2xl capitalize font-bold py-4">
+				Topic: {params.slug}
 			</h1>
-			<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+			<div className="flex flex-col  gap-4 mb-4">
 				{articles.map((article) => (
 					<ArticleCard
 						key={article.title}
