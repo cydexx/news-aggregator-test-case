@@ -18,6 +18,7 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from "./ui/tooltip"
+import Image from "next/image"
 
 export function ArticleCard({
 	className,
@@ -26,6 +27,7 @@ export function ArticleCard({
 	author,
 	date,
 	url,
+	urlToImage,
 	apiName,
 	...props
 }) {
@@ -50,9 +52,30 @@ export function ArticleCard({
 					<span>{author}</span>
 				</CardDescription>
 			</CardHeader>
+			<CardContent className="line-clamp-3">
+				{urlToImage ? (
+					<div className="relative w-full h-[300px]">
+						<Image
+							src={`${
+								urlToImage !== null
+									? urlToImage
+									: "/img/news-u-logo.webp"
+							}`}
+							alt={title}
+							fill
+							sizes="(max-width: 768px) 50vw, (max-width: 1200px) 100vw, 100vw"
+							className="object-cover"
+						/>
+					</div>
+				) : (
+					<></>
+				)}
+
+				{description}
+			</CardContent>
 			<CardFooter className="flex justify-between">
 				<div className="flex gap-2">
-					<Badge>{apiName}</Badge>
+					{apiName ? <Badge>{apiName}</Badge> : <></>}
 					<TooltipProvider>
 						<Tooltip>
 							<TooltipTrigger asChild>

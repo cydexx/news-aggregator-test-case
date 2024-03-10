@@ -14,11 +14,21 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export async function getServerSideProps({ query }) {
-	const page = query.page || 1 // Get the page from the query parameters
-	const pageSize = 10 // Set the number of articles per page
+	const page = query.page || 1
+	const pageSize = 10
+	const country = query.country || "tr"
 
-	const newsApiResponse = await fetchNewsAPI(page, pageSize, query.q)
-	const nyTimesApiResponse = await fetchNYTimes(page, pageSize)
+	const newsApiResponse = await fetchNewsAPI(
+		page,
+		pageSize,
+		query.q,
+		query.date,
+		query.sortBy,
+		query.sources,
+		country
+	)
+
+	const nyTimesApiResponse = await fetchNYTimes()
 
 	return {
 		props: {
