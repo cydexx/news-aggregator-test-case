@@ -1,4 +1,4 @@
-import { ArrowRightIcon, BellIcon, CheckIcon } from "@radix-ui/react-icons"
+import { ArrowRightIcon } from "@radix-ui/react-icons"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -52,8 +52,8 @@ export function ArticleCard({
 					<span>{author}</span>
 				</CardDescription>
 			</CardHeader>
-			<CardContent className="line-clamp-3">
-				{urlToImage ? (
+			<CardContent>
+				{urlToImage && (
 					<div className="relative w-full h-[300px]">
 						<Image
 							src={`${
@@ -67,15 +67,15 @@ export function ArticleCard({
 							className="object-cover"
 						/>
 					</div>
-				) : (
-					<></>
 				)}
 
-				{description}
+				{description && (
+					<p className="line-clamp-2 pt-4">{description}</p>
+				)}
 			</CardContent>
 			<CardFooter className="flex justify-between">
 				<div className="flex gap-2">
-					{apiName ? <Badge>{apiName}</Badge> : <></>}
+					{apiName && <Badge>{apiName}</Badge>}
 					<TooltipProvider>
 						<Tooltip>
 							<TooltipTrigger asChild>
