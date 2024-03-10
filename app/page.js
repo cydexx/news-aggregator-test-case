@@ -13,32 +13,32 @@ import {
 } from "@/components/ui/pagination"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-export async function getServerSideProps({ query }) {
-	const page = query.page || 1
-	const pageSize = 10
-	const country = query.country || "tr"
+// export async function getServerSideProps({ query }) {
+// 	const page = query.page || 1
+// 	const pageSize = 10
+// 	const country = query.country || "tr"
 
-	const newsApiResponse = await fetchNewsAPI(
-		page,
-		pageSize,
-		query.q,
-		query.date,
-		query.sortBy,
-		query.sources,
-		country
-	)
+// 	const newsApiResponse = await fetchNewsAPI(
+// 		page,
+// 		pageSize,
+// 		query.q,
+// 		query.date,
+// 		query.sortBy,
+// 		query.sources,
+// 		country
+// 	)
 
-	const nyTimesApiResponse = await fetchNYTimes()
+// 	const nyTimesApiResponse = await fetchNYTimes()
 
-	return {
-		props: {
-			articles: newsApiResponse.articles,
-			nytimes: nyTimesApiResponse.results,
-			currentPage: page,
-			totalPages: Math.ceil(newsApiResponse.totalResults / pageSize),
-		},
-	}
-}
+// 	return {
+// 		props: {
+// 			articles: newsApiResponse.articles,
+// 			nytimes: nyTimesApiResponse.results,
+// 			currentPage: page,
+// 			totalPages: Math.ceil(newsApiResponse.totalResults / pageSize),
+// 		},
+// 	}
+// }
 
 export default async function Home({
 	articles,
