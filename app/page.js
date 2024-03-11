@@ -1,6 +1,5 @@
 import { ArticleCard } from "@/components/ArticleCard"
 import { DatePicker } from "@/components/ui/date-picker"
-import { Input } from "@/components/ui/input"
 import { fetchNewsAPI, fetchNYTimes } from "@/lib/articles"
 import {
 	Pagination,
@@ -12,33 +11,7 @@ import {
 	PaginationPrevious,
 } from "@/components/ui/pagination"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-
-// export async function getServerSideProps({ query }) {
-// 	const page = query.page || 1
-// 	const pageSize = 10
-// 	const country = query.country || "tr"
-
-// 	const newsApiResponse = await fetchNewsAPI(
-// 		page,
-// 		pageSize,
-// 		query.q,
-// 		query.date,
-// 		query.sortBy,
-// 		query.sources,
-// 		country
-// 	)
-
-// 	const nyTimesApiResponse = await fetchNYTimes()
-
-// 	return {
-// 		props: {
-// 			articles: newsApiResponse.articles,
-// 			nytimes: nyTimesApiResponse.results,
-// 			currentPage: page,
-// 			totalPages: Math.ceil(newsApiResponse.totalResults / pageSize),
-// 		},
-// 	}
-// }
+import SearchBox from "@/components/SearchBox"
 
 export default async function Home({
 	articles,
@@ -60,10 +33,7 @@ export default async function Home({
 	return (
 		<main className="container">
 			{/* <ThemeToggle /> */}
-			<div className="flex gap-4 mb-4">
-				<Input placeholder="Search an article." />
-				<DatePicker />
-			</div>
+
 			{JSON.stringify(articles)}
 
 			<Tabs defaultValue="newsapi" className="">
