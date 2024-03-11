@@ -7,7 +7,6 @@ import { DatePicker } from "./ui/date-picker"
 export default function SearchBox() {
 	const router = useRouter()
 	const handleSearch = (query) => {
-		// Arama yapıldığında "/news/input" sayfasına yönlendirme
 		router.push(`/news/${query}`)
 	}
 	return (

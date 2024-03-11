@@ -34,6 +34,14 @@ const navLinks = [
 		title: "Entertainment",
 		url: "/entertainment",
 	},
+	{
+		title: "Innovation",
+		url: "/innovation",
+	},
+	{
+		title: "Travel",
+		url: "/travel",
+	},
 ]
 export default function Navbar() {
 	return (

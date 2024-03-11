@@ -5,6 +5,7 @@ export default async function Page() {
 	const articles = await getNewsByCategory("popular")
 	return (
 		<div className="container">
+			<h1 className="text-2xl capitalize font-bold py-4">Popular News</h1>
 			<div className="flex flex-col  gap-4 mb-4">
 				{articles.map((article) => (
 					<ArticleCard
