@@ -8,13 +8,13 @@ const navLinks = [
 		label: "Home",
 	},
 	{
-		href: "/feed",
+		href: "/news",
 		label: "Feed",
 	},
 ]
 export default function Header() {
 	return (
-		<header className="container flex justify-between   items-center border-b border-b-foreground/10 h-16 p-3">
+		<header className="container flex justify-between  items-center border-b border-b-foreground/10 h-16 ">
 			<div className="flex gap-6">
 				{navLinks.map((link) => (
 					<Link key={link.href} href={link.href}>

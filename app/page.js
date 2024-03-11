@@ -23,13 +23,6 @@ export default async function Home({
 	const totalResults = newsApi.totalResults
 	const nyTimesArticles = await fetchNYTimes()
 
-	const handleNextPage = async () => {
-		const nextPage = currentPage + 1
-		const response = await fetchNewsAPI(nextPage, 10)
-		// Update the component state or any other logic to handle the new data
-		console.log("Next page data:", response.articles)
-	}
-
 	return (
 		<main className="container">
 			{/* <ThemeToggle /> */}
@@ -42,7 +35,9 @@ export default async function Home({
 					<TabsTrigger value="nytimesapi">NYTimesAPI</TabsTrigger>
 				</TabsList>
 				<TabsContent value="newsapi">
-					{totalResults + "haber vars"}
+					<p className="text-lg py-2 font-semibold">
+						{totalResults + " Top Headlines from Turkey"}
+					</p>
 					{JSON.stringify(articles)}
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
 						{newsApi.articles.map((article) => (
@@ -53,6 +48,7 @@ export default async function Home({
 								date={article.publishedAt}
 								description={article.description}
 								url={article.url}
+								urlToImage={article.urlToImage}
 								apiName={"NewsAPI"}
 							/>
 						))}
