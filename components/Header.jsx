@@ -1,5 +1,6 @@
 import Link from "next/link"
 import ThemeToggle from "./theme-toggle"
+import Image from "next/image"
 
 const navLinks = [
 	{
@@ -21,9 +22,19 @@ export default function Header() {
 					</Link>
 				))}
 			</div>
-
 			<div className="flex justify-center items-center gap-4 ">
 				<ThemeToggle />
+				<Link
+					href="https://www.cydex.dev/"
+					target="_blank "
+					className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
+				>
+					<Image
+						src="https://github.com/cydexx.png"
+						alt="Cydex"
+						fill
+					/>
+				</Link>
 			</div>
 		</header>
 	)
