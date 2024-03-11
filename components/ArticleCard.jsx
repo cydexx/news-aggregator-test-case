@@ -1,6 +1,7 @@
-import { ArrowRightIcon } from "@radix-ui/react-icons"
-
+import Link from "next/link"
+import Image from "next/image"
 import { cn } from "@/lib/utils"
+
 import { Button } from "@/components/ui/button"
 import {
 	Card,
@@ -10,7 +11,6 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card"
-import Link from "next/link"
 import { Badge } from "./ui/badge"
 import {
 	Tooltip,
@@ -18,7 +18,8 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from "./ui/tooltip"
-import Image from "next/image"
+
+import { ArrowRightIcon } from "@radix-ui/react-icons"
 
 export function ArticleCard({
 	className,
@@ -56,19 +57,13 @@ export function ArticleCard({
 				{urlToImage && (
 					<div className="relative w-full h-[300px]">
 						<Image
-							src={`${
-								urlToImage !== null
-									? urlToImage
-									: "/img/news-u-logo.webp"
-							}`}
+							src={urlToImage}
 							alt={title}
 							fill
-							sizes="(max-width: 768px) 50vw, (max-width: 1200px) 100vw, 100vw"
-							className="object-cover"
+							className="object-cover rounded-md"
 						/>
 					</div>
 				)}
-
 				{description && (
 					<p className="line-clamp-2 pt-4">{description}</p>
 				)}
@@ -88,7 +83,6 @@ export function ArticleCard({
 							</TooltipContent>
 						</Tooltip>
 					</TooltipProvider>
-					{/* <span className="text-sm">{detailedDate}</span> */}
 				</div>
 				<Button variant="link" asChild className="" size="md">
 					<Link href={url} target="_blank">
